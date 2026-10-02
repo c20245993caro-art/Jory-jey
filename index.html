@@ -1,69 +1,163 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Jory Jey Caro | Student Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-   
+<body style="background-image: url('https://scontent.fceb1-2.fna.fbcdn.net/v/t1.6435-9/65712046_141101660408586_3963702575903014912_n.jpg?stp=dst-jpg_tt6&cstp=mx960x1280&ctp=s960x1280&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHuQlaT1ajoJE1uu3d0xir4gEJ9UvfWha2AQn1S99aFrcy8zgEK13AcCw7IKZZ4E-SxsrsPVViWIBChZV4Zx86D&_nc_ohc=RQ-fVC-PRmUQ7kNvwHNP9yL&_nc_oc=AdpfeJjcLWQ3IdSS7Ip5wX1ZOspV5kOknyK7E-kE-qqE-sFnKBW09yQEW86q43MLAf4&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=ilRkg1Y5xBf1fR2U7wBRNg&_nc_ss=7a2a8&oh=00_AQPKkRXf36NombjbnbvL3MDHYG_ufLEaUGMsYKOZ9xjEsA&oe=6AE6F078');"bg-gray-100 text-gray-800">
 
-     <h1 class="text-3xl font-bold underline text-red-700">
-      Jory Jey B. Caro
-      
+    <h1 class="text-center text-3xl font-bold text-blue-600 mt-8">
+        Jory Jey B. Caro
     </h1>
 
-    <button id="switch">Switch</button>
-    <header>
-        <nav>
-            <span>@cejaay.21</span>
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact Me</a></li>
+    <button id="switch"
+        class="block mx-auto mt-4 bg-blue-600 text-white px-4 py-2 rounded border-2 border-red-500">
+        Switch
+    </button>
+
+    <header class="mt-6 border-y-4 border-red-500 bg-white">
+
+        <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <span class="font-bold text-blue-600">
+                @ceejaay.21
+            </span>
+
+            <ul class="flex gap-5">
+                <li>
+                    <a href="#projects" class="hover:text-blue-600">
+                        Projects
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#services" class="hover:text-blue-600">
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#contact" class="hover:text-blue-600">
+                        Contact Me
+                    </a>
+                </li>
             </ul>
+
         </nav>
+
     </header>
 
-    <main>
-        <section id="projects"> 
-            <h2 class="projects">My Projects</h2>
-            <p>Personal portfolio, payroll system, company website, startup website, and compliance monitoring system.
+
+    <main class="max-w-5xl mx-auto px-6">
+
+        <section id="projects"
+            class="py-10 my-6 px-6 border-2 border-red-500 bg-white rounded-lg">
+
+            <h2 class="text-2xl font-bold text-blue-600">
+                My Projects
+            </h2>
+
+            <p class="mt-3">
+                Seafood ordering system, crab supply system,
+                business sales page, and personal portfolio.
             </p>
+
         </section>
 
-        <section id="services">
-            <h2 class="services">My Services</h2>
-            <p>Website Creation, System Creation, AI Automation, Database Management, Project Management, Systems
-                Analyst</p>
+
+        <section id="services"
+            class="py-10 my-6 px-6 border-2 border-red-500 bg-white rounded-lg">
+
+            <h2 class="text-2xl font-bold text-blue-600">
+                My Services
+            </h2>
+
+            <p class="mt-3">
+                Website Creation, System Creation, Database Management,
+                Basic Programming, and System Design.
+            </p>
+
         </section>
 
-        <section id="contact">
-            <h2 class="contact">Let's build together!</h2>
-            <form action="#">
+
+        <section id="contact"
+            class="py-10 my-6 px-6 border-2 border-red-500 bg-white rounded-lg">
+
+            <h2 class="text-2xl font-bold text-blue-600">
+                Let's Build Together!
+            </h2>
+
+            <form action="#" class="mt-5 max-w-lg">
+
                 <!-- Name -->
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name" class="block mb-2">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 focus:outline-none focus:border-red-500"
+                >
+
 
                 <!-- Email -->
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required>
+                <label for="email" class="block mb-2">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 focus:outline-none focus:border-red-500"
+                >
+
 
                 <!-- Message -->
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="5" required></textarea>
+                <label for="message" class="block mb-2">
+                    Message
+                </label>
+
+                <textarea
+                    name="message"
+                    id="message"
+                    rows="5"
+                    required
+                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 focus:outline-none focus:border-red-500"
+                ></textarea>
+
 
                 <!-- Submit -->
-                <button type="submit">Send Message</button>
+                <button
+                    type="submit"
+                    class="bg-blue-600 text-white px-5 py-2 rounded border-2 border-red-500 hover:bg-blue-700"
+                >
+                    Send Message
+                </button>
+
             </form>
+
         </section>
+
     </main>
 
-    <!-- <script src="script.js"></script> -->
 </body>
 
 </html>
+
+
+
+
+
+
+       
