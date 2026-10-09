@@ -1,6 +1,8 @@
+html
+```
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -8,20 +10,30 @@
     <title>Jory Jey Caro | Student Portfolio</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+    </script>
 </head>
 
-<body style="background-image: url('https://scontent.fceb1-2.fna.fbcdn.net/v/t1.6435-9/65712046_141101660408586_3963702575903014912_n.jpg?stp=dst-jpg_tt6&cstp=mx960x1280&ctp=s960x1280&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHuQlaT1ajoJE1uu3d0xir4gEJ9UvfWha2AQn1S99aFrcy8zgEK13AcCw7IKZZ4E-SxsrsPVViWIBChZV4Zx86D&_nc_ohc=RQ-fVC-PRmUQ7kNvwHNP9yL&_nc_oc=AdpfeJjcLWQ3IdSS7Ip5wX1ZOspV5kOknyK7E-kE-qqE-sFnKBW09yQEW86q43MLAf4&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=ilRkg1Y5xBf1fR2U7wBRNg&_nc_ss=7a2a8&oh=00_AQPKkRXf36NombjbnbvL3MDHYG_ufLEaUGMsYKOZ9xjEsA&oe=6AE6F078');"bg-gray-100 text-gray-800">
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
 
     <h1 class="text-center text-3xl font-bold text-blue-600 mt-8">
         Jory Jey B. Caro
     </h1>
 
-    <button id="switch"
-        class="block mx-auto mt-4 bg-blue-600 text-white px-4 py-2 rounded border-2 border-red-500">
-        Switch
+    <!-- Switch Button -->
+    <button
+        id="switch"
+        type="button"
+        class="block mx-auto mt-4 bg-blue-600 text-white px-4 py-2 rounded border-2 border-red-500 hover:bg-blue-700 transition-colors duration-300">
+        Toggle
     </button>
 
-    <header class="mt-6 border-y-4 border-red-500 bg-white">
+    <!-- Header -->
+    <header class="mt-6 border-y-4 border-red-500 bg-white dark:bg-gray-900 transition-colors duration-300">
 
         <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
 
@@ -53,11 +65,11 @@
 
     </header>
 
-
     <main class="max-w-5xl mx-auto px-6">
 
+        <!-- My Projects -->
         <section id="projects"
-            class="py-10 my-6 px-6 border-2 border-red-500 bg-white rounded-lg">
+            class="py-10 my-6 px-6 border-2 border-red-500 bg-white dark:bg-gray-900 rounded-lg transition-colors duration-300">
 
             <h2 class="text-2xl font-bold text-blue-600">
                 My Projects
@@ -70,9 +82,9 @@
 
         </section>
 
-
+        <!-- My Services -->
         <section id="services"
-            class="py-10 my-6 px-6 border-2 border-red-500 bg-white rounded-lg">
+            class="py-10 my-6 px-6 border-2 border-red-500 bg-white dark:bg-gray-800 rounded-lg transition-colors duration-300">
 
             <h2 class="text-2xl font-bold text-blue-600">
                 My Services
@@ -85,9 +97,9 @@
 
         </section>
 
-
+        <!-- Contact Me -->
         <section id="contact"
-            class="py-10 my-6 px-6 border-2 border-red-500 bg-white rounded-lg">
+            class="py-10 my-6 px-6 border-2 border-red-500 bg-white dark:bg-gray-900 rounded-lg transition-colors duration-300">
 
             <h2 class="text-2xl font-bold text-blue-600">
                 Let's Build Together!
@@ -105,9 +117,7 @@
                     id="name"
                     name="name"
                     required
-                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 focus:outline-none focus:border-red-500"
-                >
-
+                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 bg-white text-gray-800 dark:bg-gray-800 dark:text-white dark:border-red-500 focus:outline-none focus:border-red-500">
 
                 <!-- Email -->
                 <label for="email" class="block mb-2">
@@ -119,9 +129,7 @@
                     name="email"
                     id="email"
                     required
-                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 focus:outline-none focus:border-red-500"
-                >
-
+                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 bg-white text-gray-800 dark:bg-gray-800 dark:text-white dark:border-red-500 focus:outline-none focus:border-red-500">
 
                 <!-- Message -->
                 <label for="message" class="block mb-2">
@@ -133,15 +141,12 @@
                     id="message"
                     rows="5"
                     required
-                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 focus:outline-none focus:border-red-500"
-                ></textarea>
+                    class="w-full border-2 border-red-300 rounded px-3 py-2 mb-4 bg-white text-gray-800 dark:bg-gray-800 dark:text-white dark:border-red-500 focus:outline-none focus:border-red-500"></textarea>
 
-
-                <!-- Submit -->
+                <!-- Submit Button -->
                 <button
                     type="submit"
-                    class="bg-blue-600 text-white px-5 py-2 rounded border-2 border-red-500 hover:bg-blue-700"
-                >
+                    class="bg-blue-600 text-white px-5 py-2 rounded border-2 border-red-500 hover:bg-blue-700 transition-colors duration-300">
                     Send Message
                 </button>
 
@@ -151,13 +156,15 @@
 
     </main>
 
+    <script>
+        const tb = document.getElementById('switch');
+        const html = document.querySelector("html");
+
+        tb.addEventListener("click", function (){
+         html.classList.toggle("dark");       
+        });
+    </script>
+
 </body>
-
 </html>
-
-
-
-
-
-
-       
+```
