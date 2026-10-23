@@ -8,22 +8,11 @@
     <title>Jory Jey Caro | Portfolio</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script>
         tailwind.config = {
             darkMode: 'class'
         };
     </script>
-
-    <style type="text/tailwindcss">
-        @custom-variant dark (&:where(.dark, .dark *));
-
-        @layer components {
-            .btn-primary {
-                @apply px-6 py-3 bg-blue-800 text-white hover:bg-orange-400 transition-colors dark:bg-slate-700;
-            }
-        }
-    </style>
 
     <style>
         html {
@@ -51,8 +40,8 @@
             color: white;
         }
 
-        .white {
-            background: #ffffff;
+        .white-accent {
+            background: white;
             color: #172554;
         }
 
@@ -89,16 +78,64 @@
             color: white;
         }
 
-        .white-accent {
-            background: white;
+        /* Scroll progress bar */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #facc15;
+            transform: scaleX(0);
+            transform-origin: left;
+            z-index: 9999;
+        }
+
+        /* Mouse-following glow */
+        #cursorGlow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            filter: blur(35px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        input, textarea {
             color: #172554;
+        }
+
+        /* Hide only the unwanted marker */
+        .gsap-marker-scroller-end {
+            display: none !important;
+        }
+
+        @media (pointer: coarse) {
+            #cursorGlow {
+                display: none;
+            }
         }
     </style>
 </head>
 
 <body>
 
-   
+    <!-- Scroll Progress Bar -->
+    <div id="progressBar"></div>
+
+    <!-- Mouse Glow -->
+    <div id="cursorGlow"></div>
+
+    <!-- Navigation -->
     <nav class="flex flex-wrap items-center justify-between gap-4 border-b-4 border-red-600 p-5">
 
         <a href="#home"
@@ -111,454 +148,435 @@
             <a href="#services">SERVICES</a>
             <a href="#contact">CONTACT</a>
 
-        
             <button id="themeBtn"
-                class="btn-primary"
+                class="btn-primary border-2 border-red-600 px-4 py-2"
                 onclick="toggleTheme()">
                 LIGHT MODE
             </button>
+
             <button onclick="replayTimeline()"
-    class="btn-primary border-2 border-red-600">
-    REPLAY TIMELINE
-</button>
+                class="btn-primary border-2 border-red-600 px-4 py-2">
+                REPLAY TIMELINE
+            </button>
         </div>
     </nav>
 
+    <main>
 
-    <section id="home" class="stripe p-6 md:p-16">
+        <!-- HOME -->
+        <section id="home" class="stripe p-6 md:p-16">
 
-        <div class="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-2">
+            <div class="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-2">
 
-            <div class="card red p-6 md:p-8">
+                <div class="card red p-6 md:p-8">
 
-                <p class="text-sm font-black">
-                    PINAKA GWAPO SA VICTORIAS
-                </p>
+                    <p class="text-sm font-black">
+                        PINAKA GWAPO SA VICTORIAS
+                    </p>
 
-                <h1 class="mt-5 text-5xl font-black uppercase leading-none md:text-7xl">
-                    Jory<br>Jey Caro
-                </h1>
+                    <h1 id="nameTitle"
+                        class="mt-5 text-5xl font-black uppercase leading-none md:text-7xl">
+                        Jory<br>Jey Caro
+                    </h1>
 
-                <p class="mt-5 font-bold">
-                    TAGA YAWEE GALI AH
-                </p>
+                    <p class="mt-5 font-bold">
+                        TAGA YAWEE GALI AH
+                    </p>
 
-                <a href="#about"
-                    class="white-accent mt-6 inline-block border-2 border-white px-6 py-3 font-black hover:bg-blue-900 hover:text-white">
-                    ABOUT ME
-                </a>
+                    <a href="#about"
+                        class="white-accent mt-6 inline-block border-2 border-white px-6 py-3 font-black hover:bg-blue-900 hover:text-white">
+                        ABOUT ME
+                    </a>
 
-            </div>
+                </div>
 
-            <div class="card light-card p-8 md:p-10">
+                <div class="card light-card p-8 md:p-10">
 
-                <h2 class="text-4xl font-black uppercase md:text-6xl">
-                    SINGER<br>DANCER
-                </h2>
+                    <h2 class="text-4xl font-black uppercase md:text-6xl">
+                        SINGER<br>DANCER
+                    </h2>
 
-                <div class="white-accent mt-6 p-4 text-center font-black">
-                    BAW AMBOT
+                    <div class="white-accent mt-6 p-4 text-center font-black">
+                        BAW AMBOT
+                    </div>
+
                 </div>
 
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- ABOUT -->
+        <section id="about"
+            class="grid gap-8 border-b-2 border-red-500 p-8 md:grid-cols-2 md:p-16">
 
-
-    <section id="about"
-        class="grid gap-8 border-b-2 border-red-500 p-8 md:grid-cols-2 md:p-16">
-
-        <h2 class="red h-fit p-5 text-4xl font-black uppercase md:text-6xl">
-            About Me.
-        </h2>
-
-        <div>
-
-            <p class="text-xl font-bold leading-relaxed">
-                AKO SI JORY JEY CARO TAGA VILLA VICTORIAS
-                NAGA EDAD SANG BENTE (20) ANYOS KAG AKO MALIPAYON
-            </p>
-
-            <p class="mt-5 leading-7 text-blue-100">
-                "Chasing a heart is like chasing a ghost.
-                You can't make somebody you love feel the same if they don't."
-            </p>
-
-            <div class="mt-6 flex flex-wrap gap-3">
-                <span class="white-accent px-4 py-2 font-black">HTML</span>
-                <span class="border-2 border-red-400 px-4 py-2 font-black">CSS</span>
-                <span class="border-2 border-red-400 px-4 py-2 font-black">TAILWIND</span>
-                <span class="border-2 border-red-400 px-4 py-2 font-black">LARAVEL</span>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="services" class="stripe p-8 md:p-16">
-
-        <h2 class="card red mb-10 inline-block p-5 text-4xl font-black uppercase md:text-6xl">
-            My Services.
-        </h2>
-
-        <div class="grid gap-6 md:grid-cols-3">
-
-            <div class="card light-card p-6">
-                <p class="white-accent inline-block px-3 py-1 text-3xl font-black">
-                    01
-                </p>
-
-                <h3 class="mt-4 text-2xl font-black">
-                    MANOG HUGAS PINGGAN
-                </h3>
-
-                <p class="mt-3">
-                    tinlo, safety, kag dasig
-                </p>
-            </div>
-
-            <div class="card red p-6">
-                <p class="white-accent inline-block px-3 py-1 text-3xl font-black">
-                    02
-                </p>
-
-                <h3 class="mt-4 text-2xl font-black">
-                    TAGA LUTO SUDAN
-                </h3>
-
-                <p class="mt-3">
-                    namit, dasig, kag kuha kuha ang timpla
-                </p>
-            </div>
-
-            <div class="card light-card p-6">
-                <p class="white-accent inline-block px-3 py-1 text-3xl font-black">
-                    03
-                </p>
-
-                <h3 class="mt-4 text-2xl font-black">
-                    TAGA LIMPYO
-                </h3>
-
-                <p class="mt-3">
-                    hipid kag perti ka tinlo
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-   
-    <section id="contact"
-        class="grid gap-8 border-t-4 border-red-600 p-8 md:grid-cols-2 md:p-16">
-
-        <div>
-
-            <p class="white-accent inline-block px-4 py-2 font-black">
-                DIIN KAPA?
-            </p>
-
-            <h2 class="mt-6 text-5xl font-black uppercase md:text-7xl">
-                DALI<br>NA!
+            <h2 class="red h-fit p-5 text-4xl font-black uppercase md:text-6xl">
+                About Me.
             </h2>
 
-            <p class="mt-5 text-blue-100">
-                STORYAHAN TANA MAYU AHH.
-            </p>
+            <div>
+                <p class="text-xl font-bold leading-relaxed">
+                    AKO SI JORY JEY CARO TAGA VILLA VICTORIAS
+                    NAGA EDAD SANG BENTE (20) ANYOS KAG AKO MALIPAYON
+                </p>
 
-        </div>
+                <p class="mt-5 leading-7 text-blue-100">
+                    "Chasing a heart is like chasing a ghost.
+                    You can't make somebody you love feel the same if they don't."
+                </p>
 
-        <form class="light-card card p-6" onsubmit="sendMessage(event)">
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <span class="white-accent px-4 py-2 font-black">HTML</span>
+                    <span class="border-2 border-red-400 px-4 py-2 font-black">CSS</span>
+                    <span class="border-2 border-red-400 px-4 py-2 font-black">TAILWIND</span>
+                    <span class="border-2 border-red-400 px-4 py-2 font-black">LARAVEL</span>
+                </div>
+            </div>
+        </section>
 
-            <label for="email" class="font-black">
-                YOUR EMAIL
-            </label>
+        <!-- SERVICES -->
+        <section id="services" class="stripe p-8 md:p-16">
 
-            <input id="email"
-                type="email"
-                required
-                placeholder="yourname@email.com"
-                class="mt-3 w-full border-2 border-red-600 p-4">
+            <h2 class="card red mb-10 inline-block p-5 text-4xl font-black uppercase md:text-6xl">
+                My Services.
+            </h2>
 
-            <label for="message" class="mt-5 block font-black">
-                MESSAGE
-            </label>
+            <div class="grid gap-6 md:grid-cols-3">
 
-            <textarea id="message"
-                required
-                rows="3"
-                placeholder="Write your message..."
-                class="mt-3 w-full border-2 border-red-600 p-4"></textarea>
+                <div class="card light-card p-6">
+                    <p class="white-accent inline-block px-3 py-1 text-3xl font-black">
+                        01
+                    </p>
 
-            <button type="submit"
-                class="btn-primary mt-4 w-full border-2 border-red-600">
-                SUBMIT
-            </button>
+                    <h3 class="mt-4 text-2xl font-black">
+                        MANOG HUGAS PINGGAN
+                    </h3>
 
-            <p id="status" class="mt-3 text-sm font-bold"></p>
+                    <p class="mt-3">
+                        tinlo, safety, kag dasig
+                    </p>
+                </div>
 
-        </form>
-    </section>
+                <div class="card red p-6">
+                    <p class="white-accent inline-block px-3 py-1 text-3xl font-black">
+                        02
+                    </p>
 
+                    <h3 class="mt-4 text-2xl font-black">
+                        TAGA LUTO SUDAN
+                    </h3>
+
+                    <p class="mt-3">
+                        namit, dasig, kag kuha kuha ang timpla
+                    </p>
+                </div>
+
+                <div class="card light-card p-6">
+                    <p class="white-accent inline-block px-3 py-1 text-3xl font-black">
+                        03
+                    </p>
+
+                    <h3 class="mt-4 text-2xl font-black">
+                        TAGA LIMPYO
+                    </h3>
+
+                    <p class="mt-3">
+                        hipid kag perti ka tinlo
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact"
+            class="grid gap-8 border-t-4 border-red-600 p-8 md:grid-cols-2 md:p-16">
+
+            <div>
+                <p class="white-accent inline-block px-4 py-2 font-black">
+                    DIIN KAPA?
+                </p>
+
+                <h2 class="mt-6 text-5xl font-black uppercase md:text-7xl">
+                    DALI<br>NA!
+                </h2>
+
+                <p class="mt-5 text-blue-100">
+                    STORYAHAN TANA MAYU AHH.
+                </p>
+            </div>
+
+            <form class="light-card card p-6" onsubmit="sendMessage(event)">
+
+                <label for="email" class="font-black">
+                    YOUR EMAIL
+                </label>
+
+                <input id="email"
+                    type="email"
+                    required
+                    placeholder="yourname@email.com"
+                    class="mt-3 w-full border-2 border-red-600 p-4">
+
+                <label for="message" class="mt-5 block font-black">
+                    MESSAGE
+                </label>
+
+                <textarea id="message"
+                    required
+                    rows="3"
+                    placeholder="Write your message..."
+                    class="mt-3 w-full border-2 border-red-600 p-4"></textarea>
+
+                <button type="submit"
+                    class="btn-primary mt-4 w-full border-2 border-red-600">
+                    SUBMIT
+                </button>
+
+                <p id="status" class="mt-3 text-sm font-bold"></p>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
     <footer class="red flex flex-wrap justify-between gap-3 border-t-4 border-white p-6 font-black">
 
         <p>JJC. — STUDENT PORTFOLIO</p>
-
         <a href="#home">BACK TO TOP</a>
-
         <p>© 2026</p>
 
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
     <script>
-        console.log("Gsap ver", gsap.version);
-        //1.Tween
-       // gsap.to("h1",{rotate: 360, duration: 1});
-       //gsap.from("header",{y: -60, opacity:0,duration:1});    
-      // gsap.fromTo("h1",{opacity:0},{opacity:1,duration:1});
+        gsap.registerPlugin(ScrollTrigger);
 
-      //2.Easing
-      //gsap.from("section",{y:-60,opacity:0,duration:3,ease:"bounce.out"});
-
-      //3.Stagger
-      //gsap.from("nav a",{y:20,opacity:0,duration:0.5,ease:"power2.out",stagger:0.5});
-
-    //4.Timeline
-    //const tl=gsap.timeline({defaults:{duration:0.5,ease:"power2.out"}});
-       //tl.from("section",{y:-60,opacity:0,duration:1,ease:"bounce.out"})
-        //tl.from("h1",{rotation: 360, duration: 1})
-        //tl.from("nav a",{y:20,opacity:0,duration:0.5,ease:"power2.out",stagger:0.5});
-   
-
-      
-   
-
-   
-
-    // 1. CREATE TIMELINE
-    const tl = gsap.timeline({
-        paused: true,
-        defaults: {
-            duration: 0.8,
-            ease: "power2.out"
-        }
-    });
-
-    // 2. H1 ANIMATION: gsap.from()
-    tl.from("#home h1", {
-        y: 60,
-        opacity: 0
-    });
-
-    // 3. H1 ANIMATION: gsap.to()
-    tl.to("#home h1", {
-        rotation: 360,
-        duration: 1,
-        ease: "power1.inOut"
-    });
-
-    // 4. H1 ANIMATION: gsap.fromTo()
-    tl.fromTo("#home h1",
-        { scale: 0.9 },
-        { scale: 1, duration: 0.5 }
-    );
-
-    // 5. NAV ANIMATION: EASE AND STAGGER
-    tl.from("nav a", {
-        y: 25,
-        opacity: 0,
-        stagger: 0.2,
-        ease: "back.out(1.7)",
-        duration: 0.6
-    }, "-=0.5");
-
-    // 6. SECTION ANIMATION
-    tl.from("#about, #services, #contact", {
-        y: 40,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.7,
-        ease: "power2.out"
-    });
-
-    // 7. PLAY TIMELINE
-    tl.play();
-
-   
-    function replayTimeline() {
-        tl.restart();
-    }
-
-    // 9. DARK MODE BUTTON ROTATION
-    function toggleTheme() {
-        gsap.to("#themeBtn", {
-            rotation: "+=360",
-            duration: 0.6,
-            ease: "power2.inOut"
-        });
-
-
-        document.documentElement.classList.toggle("dark");
-
-        const isDark =
-            document.documentElement.classList.contains("dark");
-
-        document.getElementById("themeBtn").textContent =
-            isDark ? "LIGHT MODE" : "DARK MODE";
-    }
-
-    // 10. CONTACT FORM
-    function sendMessage(event) {
-        event.preventDefault();
-
-        document.getElementById("status").textContent =
-            "Demo only. Connect a backend to send messages.";
-    }
-
-
-
-    // 1. TEXT SCRAMBLE EFFECT
-    const nameTitle = document.querySelector("#home h1");
-    const originalText = nameTitle.innerText.replace(/\n/g, " ");
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-    nameTitle.innerText = "";
-
-    const textAnimation = { progress: 0 };
-
-    gsap.to(textAnimation, {
-        progress: 1,
-        duration: 2,
-        ease: "none",
-        onUpdate: function () {
-            const progress = textAnimation.progress;
-            const revealCount = Math.floor(originalText.length * progress);
-
-            let result = "";
-
-            for (let i = 0; i < originalText.length; i++) {
-                if (originalText[i] === " ") {
-                    result += " ";
-                } else if (i < revealCount) {
-                    result += originalText[i];
-                } else {
-                    result += characters[
-                        Math.floor(Math.random() * characters.length)
-                    ];
-                }
+        // 1. INTRO TIMELINE
+        const tl = gsap.timeline({
+            paused: true,
+            defaults: {
+                duration: 0.8,
+                ease: "power2.out"
             }
+        });
 
-            nameTitle.innerText = result;
-        },
-        onComplete: function () {
-            nameTitle.innerText = "Jory\nJey Caro";
+        tl.from("#home .card", {
+            y: 60,
+            opacity: 0,
+            stagger: 0.2
+        })
+        .from("nav a", {
+            y: 25,
+            opacity: 0,
+            stagger: 0.15
+        }, "-=0.4");
+
+        // Play intro
+        tl.play();
+
+        // 2. REPLAY TIMELINE BUTTON
+        function replayTimeline() {
+            tl.restart();
         }
-    });
 
-    // 2. MOUSE-FOLLOWING GLOW
-    const glow = document.querySelector("#cursorGlow");
+        // 3. FADE IN + FADE OUT + SCRUB + MARKERS
+        gsap.utils.toArray("#about, #services, #contact").forEach(section => {
 
-    const moveGlowX = gsap.quickTo(glow, "x", {
-        duration: 0.4,
-        ease: "power2.out"
-    });
+            gsap.fromTo(section,
+                {
+                    opacity: 0,
+                    y: 50
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        end: "top 30%",
+                        scrub: 1,
+                        markers: true
+                    }
+                }
+            );
 
-    const moveGlowY = gsap.quickTo(glow, "y", {
-        duration: 0.4,
-        ease: "power2.out"
-    });
+        });
+         ScrollTrigger.create({
+            trigger: "#services",
+            start: "top top",
+            end: "+=500",
+            pin: true,
+            pinSpacing: true,
+            markers: true
+        });
 
-    document.addEventListener("mousemove", function (event) {
-        moveGlowX(event.clientX - 90);
-        moveGlowY(event.clientY - 90);
-    });
+        // 4. SCROLL PROGRESS BAR
+        gsap.to("#progressBar", {
+            scaleX: 1,
+            ease: "none",
+            scrollTrigger: {
+                trigger: document.documentElement,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.3
+            }
+        });
 
-    // 3. MAGNETIC BUTTONS
-    document.querySelectorAll(".btn-primary").forEach(button => {
-        button.addEventListener("mousemove", function (event) {
-            const rect = button.getBoundingClientRect();
+        // 5. TEXT SCRAMBLE EFFECT
+        const nameTitle = document.querySelector("#nameTitle");
+        const originalText = "Jory Jey Caro";
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const textAnimation = { progress: 0 };
 
-            const x = event.clientX - rect.left - rect.width / 2;
-            const y = event.clientY - rect.top - rect.height / 2;
+        function scrambleText() {
+            textAnimation.progress = 0;
 
-            gsap.to(button, {
-                x: x * 0.2,
-                y: y * 0.2,
-                duration: 0.3,
-                ease: "power2.out"
+            gsap.killTweensOf(textAnimation);
+
+            gsap.to(textAnimation, {
+                progress: 1,
+                duration: 2,
+                ease: "none",
+                onUpdate: function () {
+                    const revealCount = Math.floor(
+                        originalText.length * textAnimation.progress
+                    );
+
+                    let result = "";
+
+                    for (let i = 0; i < originalText.length; i++) {
+                        if (originalText[i] === " ") {
+                            result += " ";
+                        } else if (i < revealCount) {
+                            result += originalText[i];
+                        } else {
+                            result += characters[
+                                Math.floor(Math.random() * characters.length)
+                            ];
+                        }
+                    }
+
+                    nameTitle.innerHTML = result.replace(" ", "<br>");
+                },
+                onComplete: function () {
+                    nameTitle.innerHTML = "Jory<br>Jey Caro";
+                }
             });
+        }
+
+        // Run text scramble once
+        scrambleText();
+
+        // 6. MOUSE-FOLLOWING GLOW
+        const glow = document.querySelector("#cursorGlow");
+
+        const moveGlowX = gsap.quickTo(glow, "x", {
+            duration: 0.4,
+            ease: "power2.out"
         });
 
-        button.addEventListener("mouseleave", function () {
-            gsap.to(button, {
-                x: 0,
-                y: 0,
-                duration: 0.5,
-                ease: "elastic.out(1, 0.4)"
+        const moveGlowY = gsap.quickTo(glow, "y", {
+            duration: 0.4,
+            ease: "power2.out"
+        });
+
+        document.addEventListener("mousemove", function (event) {
+            moveGlowX(event.clientX - 90);
+            moveGlowY(event.clientY - 90);
+        });
+
+        // 7. MAGNETIC BUTTONS
+        document.querySelectorAll(".btn-primary").forEach(button => {
+
+            button.addEventListener("mousemove", function (event) {
+                const rect = button.getBoundingClientRect();
+
+                const x = event.clientX - rect.left - rect.width / 2;
+                const y = event.clientY - rect.top - rect.height / 2;
+
+                gsap.to(button, {
+                    x: x * 0.2,
+                    y: y * 0.2,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
             });
-        });
-    });
 
-    // 4. 3D TILT SERVICE CARDS
-    document.querySelectorAll("#services .card").forEach(card => {
-        card.addEventListener("mousemove", function (event) {
-            const rect = card.getBoundingClientRect();
-
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-
-            const rotateY = (x / rect.width - 0.5) * 15;
-            const rotateX = (0.5 - y / rect.height) * 15;
-
-            gsap.to(card, {
-                rotationX: rotateX,
-                rotationY: rotateY,
-                scale: 1.03,
-                duration: 0.3,
-                ease: "power2.out",
-                transformPerspective: 800
+            button.addEventListener("mouseleave", function () {
+                gsap.to(button, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "elastic.out(1, 0.4)"
+                });
             });
+
         });
 
-        card.addEventListener("mouseleave", function () {
-            gsap.to(card, {
-                rotationX: 0,
-                rotationY: 0,
-                scale: 1,
-                duration: 0.5,
-                ease: "power2.out"
+        // 8. 3D TILT SERVICE CARDS
+        document.querySelectorAll("#services .card").forEach(card => {
+
+            card.addEventListener("mousemove", function (event) {
+                const rect = card.getBoundingClientRect();
+
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                const rotateY = (x / rect.width - 0.5) * 15;
+                const rotateX = (0.5 - y / rect.height) * 15;
+
+                gsap.to(card, {
+                    rotationX: rotateX,
+                    rotationY: rotateY,
+                    scale: 1.03,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    transformPerspective: 800
+                });
             });
+
+            card.addEventListener("mouseleave", function () {
+                gsap.to(card, {
+                    rotationX: 0,
+                    rotationY: 0,
+                    scale: 1,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+
         });
-    });
 
-    // 5. DARK MODE BUTTON
-    function toggleTheme() {
-        const btn = document.getElementById("themeBtn");
+        // 9. DARK MODE TOGGLE
+        function toggleTheme() {
+            const btn = document.getElementById("themeBtn");
 
-        gsap.to(btn, {
-            rotation: "+=360",
-            duration: 0.6,
-            ease: "power2.inOut",
-            transformOrigin: "50% 50%"
-        });
+            gsap.to(btn, {
+                rotation: "+=360",
+                duration: 0.6,
+                ease: "power2.inOut"
+            });
 
-        document.documentElement.classList.toggle("dark");
+            document.documentElement.classList.toggle("dark");
 
-        const isDark =
-            document.documentElement.classList.contains("dark");
+            const isDark = document.documentElement.classList.contains("dark");
 
-        btn.textContent = isDark ? "LIGHT MODE" : "DARK MODE";
-    }
+            btn.textContent = isDark ? "LIGHT MODE" : "DARK MODE";
+        }
 
-    // 6. CONTACT FORM DEMO
-    function sendMessage(event) {
-        event.preventDefault();
+        // 10. CONTACT FORM DEMO
+        function sendMessage(event) {
+            event.preventDefault();
 
-        document.getElementById("status").textContent =
-            "Demo only. Connect a backend to send messages.";
-    }
-</script>
+            document.getElementById("status").textContent =
+                "Demo only. Connect a backend to send messages.";
+        }
+    </script>
+
 </body>
 </html>
-
